@@ -127,7 +127,7 @@ function stampTemplate(arreyObject) {
 	return document.querySelector('.ls-section-main').innerHTML += `
 		<div class="col ls-padding">
 			<div class="font-icoins-container">
-				<i class="fas fa-${name} orange"></i>
+				<i class="fas fa-${name}"></i>
 				<span>${name}</span>
 			</div>
 		</div>
