@@ -1,4 +1,4 @@
-[
+const icons = [
 	{
 		name: 'cat',
 		prefix: 'fa-',
@@ -112,3 +112,24 @@
 		color: 'blue'
 	}
 ];
+
+for (let key in icons) {
+
+	const icon = icons[key];
+
+	stampTemplate(icon);
+}
+
+function stampTemplate(arreyObject) {
+
+	const {name} = arreyObject;
+
+	return document.querySelector('.ls-section-main').innerHTML += `
+		<div class="col ls-padding">
+			<div class="font-icoins-container">
+				<i class="fas fa-${name} orange"></i>
+				<span>${name}</span>
+			</div>
+		</div>
+	`;
+}

@@ -1,8 +1,46 @@
+body {
+  font-family: 'Acme', sans-serif;
+  background-color: #dddddd;
+}
+
+/* HEADEER */
 header {
-  background-color: lightgray;
-  text-align: center;
+  background-color: #fff;
+  font-family: 'Acme', sans-serif;
 }
 
 h1 {
-  font-size: 100px;
+  color: #29b1dd;
+  font-weight: bolder;
+  padding: 10px 0 0 15px;
+  margin: 0;
 }
+
+header .nav {
+  background-color: #29b1dd;
+  height: 50px;
+}
+
+/* MAIN */
+.ls-padding {
+  padding: 0 40px;
+}
+
+.font-icoins-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  border-radius: 5px;
+  margin: 25px 0;
+}
+
+.font-icoins-container .fas{
+  font-size: 30px;
+  padding: 5px;
+}
+
+.font-icoins-container span {
+  text-transform: uppercase;
+}
+
