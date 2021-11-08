@@ -113,26 +113,21 @@ const icons = [
 	}
 ];
 
+const sectionMain = document.querySelector('.ls-section-main');
 const form = document.querySelector('.form-select');
 
-
-// for (let key in icons) {
-
-// 	const icon = icons[key];
-
-// 	stampTemplate(icon);	
-
-// }
 
 const animal = icons.filter((icon) => icon.type === 'animal' );
 const vegetable = icons.filter((icon) => icon.type === 'vegetable' );
 const user = icons.filter((icon) => icon.type === 'user' );
 
-console.log(animal);
+
 
 stampTemplate(icons);
 
-form.addEventListener("change", function() {
+form.addEventListener("change", function(stampEveryTemplate) {
+
+	sectionMain.innerHTML = '';
 
 	if (form.value === 'animal') {
 		stampTemplate(animal);
@@ -151,7 +146,7 @@ function createTemplate(arreyObject) {
 
 	const {name, color, type} = arreyObject;
 
-	const sectionMain = document.querySelector('.ls-section-main');
+	// const sectionMain = document.querySelector('.ls-section-main');
 
 	const category = document.createElement('div');
 	category.className = `col ls-padding ${type}`;
@@ -171,3 +166,4 @@ function stampTemplate(arreyObject) {
 		createTemplate(arreyObject[key])
 	}
 }
+
