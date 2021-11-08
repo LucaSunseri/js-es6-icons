@@ -114,44 +114,46 @@ const icons = [
 ];
 
 const form = document.querySelector('.form-select');
-let category;
 
 
-for (let key in icons) {
+// for (let key in icons) {
 
-	const icon = icons[key];
+// 	const icon = icons[key];
 
-	stampTemplate(icon);	
+// 	stampTemplate(icon);	
 
-	console.log('prima',category);
+// }
 
-	form.addEventListener("change", function() {
+const animal = icons.filter((icon) => icon.type === 'animal' );
+const vegetable = icons.filter((icon) => icon.type === 'vegetable' );
+const user = icons.filter((icon) => icon.type === 'user' );
 
-		// console.log(category.classList.contains('animal'));
+console.log(animal);
+
+stampTemplate(icons);
+
+form.addEventListener("change", function() {
+
+	if (form.value === 'animal') {
+		stampTemplate(animal);
+	} else if (form.value === 'vegetable'){
+		stampTemplate(vegetable);
+	} else if (form.value === 'user'){
+		stampTemplate(user);
+	} else {
+		stampTemplate(icons);
+	}
 	
-		if (form.value === 'animal') {
-			console.log('animale');
-			// console.log(category.classList.contains('animal'));
-			console.log('dopo',category);
-		} else if (form.value === 'vegetable') {
-			console.log('vegetable');
-		} else if (form.value === 'user') {
-			console.log('user');
-		}
-	})
-	
-}
+})
 
 
-
-
-function stampTemplate(arreyObject) {
+function createTemplate(arreyObject) {
 
 	const {name, color, type} = arreyObject;
 
 	const sectionMain = document.querySelector('.ls-section-main');
 
-	category = document.createElement('div');
+	const category = document.createElement('div');
 	category.className = `col ls-padding ${type}`;
 
 	category.innerHTML = `
@@ -162,3 +164,10 @@ function stampTemplate(arreyObject) {
 	`;
 	sectionMain.append(category);
 };
+
+
+function stampTemplate(arreyObject) {
+	for (let key in arreyObject) {
+		createTemplate(arreyObject[key])
+	}
+}
