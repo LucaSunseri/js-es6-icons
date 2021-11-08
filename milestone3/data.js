@@ -114,6 +114,7 @@ const icons = [
 ];
 
 const sectionMain = document.querySelector('.ls-section-main');
+
 const form = document.querySelector('.form-select');
 
 
@@ -122,10 +123,37 @@ const vegetable = icons.filter((icon) => icon.type === 'vegetable' );
 const user = icons.filter((icon) => icon.type === 'user' );
 
 
-
+// Utilizzo delle funzioni create per stampare il tutto
 stampTemplate(icons);
+form.addEventListener("change",stampEveryTemplate);
 
-form.addEventListener("change", function(stampEveryTemplate) {
+
+// Funzione che crea il Template 
+function createTemplate(target, arreyObject) {
+
+	const {name, color, type} = arreyObject;
+
+	const category = document.createElement('div');
+	category.className = `col ls-padding ${type}`;
+
+	category.innerHTML = `
+		<div class="font-icoins-container">
+			<i class="fas fa-${name} ${color}"></i>
+			<span>${name}</span>
+	  </div>
+	`;
+	target.append(category);
+};
+
+// Funzione che stampa il Template 
+function stampTemplate(arreyObject) {
+	for (let key in arreyObject) {
+		createTemplate(sectionMain, arreyObject[key])
+	}
+}
+
+// Funzione che stampa il Template in base al value
+function stampEveryTemplate() {
 
 	sectionMain.innerHTML = '';
 
@@ -139,31 +167,6 @@ form.addEventListener("change", function(stampEveryTemplate) {
 		stampTemplate(icons);
 	}
 	
-})
-
-
-function createTemplate(arreyObject) {
-
-	const {name, color, type} = arreyObject;
-
-	// const sectionMain = document.querySelector('.ls-section-main');
-
-	const category = document.createElement('div');
-	category.className = `col ls-padding ${type}`;
-
-	category.innerHTML = `
-		<div class="font-icoins-container">
-			<i class="fas fa-${name} ${color}"></i>
-			<span>${name}</span>
-	  </div>
-	`;
-	sectionMain.append(category);
-};
-
-
-function stampTemplate(arreyObject) {
-	for (let key in arreyObject) {
-		createTemplate(arreyObject[key])
-	}
 }
+
 
